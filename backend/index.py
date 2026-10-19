@@ -17,8 +17,9 @@ stripe.api_key = STRIPE_API_KEY
 app = FastAPI()
 app.add_middleware(
   CORSMiddleware,
-  allow_origins=FRONTEND_URL,
-  allow_methods=["*"]
+  allow_origins=[FRONTEND_URL],
+  allow_methods=["*"],
+  allow_headers=["*"]
 )
 
 @app.post('/create-checkout-session')
@@ -30,7 +31,7 @@ def create_checkout_session():
         'product_data':{
           'name':'T-shirt'
         },
-        'unit_amount':'2099'
+        'unit_amount': 2099
       },
       'quantity':1
     }],
